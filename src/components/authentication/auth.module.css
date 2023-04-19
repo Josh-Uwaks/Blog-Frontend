@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.bold{
+    font-family: FullBold;
+}
+.auth_container{
+    background: url(../assets/background2.svg);
+    background-color: #29292A;
+    background-size: auto;
+}
+
+.form_container{
+    padding: 40px 50px;
+}
+
+@media screen and (max-width: 480px) {
+    .form_container{
+        padding: 20px;
+    }
+}
+
+.form_container > div:nth-child(1) > h1{
+    font-family: FullBold;
+}
+.form_image{
+    background-image:linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(8, 8, 8, 0.7)), url('../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 0 0 5px;
+}
+
+.form_container div input[type='text'], input[type='password']{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background:#F9F9F9;
+}
+
+.form_container div label{
+    margin: 5px 0;
+    font-weight: bold;
+    color: #3d3c3c;
+}
