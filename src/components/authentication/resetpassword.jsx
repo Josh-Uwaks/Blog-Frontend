@@ -10,7 +10,7 @@ function ResetPassword(){
    const {id, token} = useParams()
    const navigate = useNavigate()
 
-   const url = `http://localhost:3000/api/users/forgotpassword/${id}/${token}`
+   const url = `https://uwaksblog.onrender.com/api/users/forgotpassword/${id}/${token}`
    const [password, setPassword] = useState("")
    const [confirmPassword, setconfirmPassword] = useState("")
    const [message, setMessage] = useState(false)
