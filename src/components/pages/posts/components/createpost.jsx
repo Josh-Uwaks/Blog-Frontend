@@ -77,7 +77,7 @@ function CreatePost(){
 
         await axios({
           method: 'POST',
-          url: 'http://localhost:3000/api/posts/upload',
+          url: 'https://uwaksblog.onrender.com/api/posts/upload',
           data: formData
         })
         .then((res) => {console.log(res.data)})
