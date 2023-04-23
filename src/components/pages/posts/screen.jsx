@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import NewsSkeleton from './components/boxcomponent/newskeleton'
 
 export default function Screen(){
-    const Post_Url = 'https://uwaksblog.onrender.com/api/posts/'
+    const Post_Url = 'http://localhost:3000/api/posts/'
     const [postData, setPostData] = useState('')
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loading, setLoading] = useState(true)

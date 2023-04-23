@@ -37,7 +37,8 @@ function CreatePost(){
 
   const [title, settitle] = useState('')
   const [desc, setdesc] = useState('')
-  const [img, setImg] = useState(null)
+  const [img, setImg] = useState('')
+  const [previewImg, setpreviewImg] = useState('')
   const [fileName, SetFileName] = useState("No File Selected")
 
   const [category, setCategory] = useState('')
@@ -53,67 +54,95 @@ function CreatePost(){
     'fashion'
   ]
   const onChangeFile = (e) => {
-    setImg(e.target.files[0])
-    SetFileName(e.target.files[0].name)
+    const file = e.target.files[0]
+    setImg(file)
+    SetFileName(file.name)
+    previewFile(file)
     // if(e.target.files){
     //   setImg(URL.createObjectURL(e.target.files[0]))
     // }
   }
 
-  // const handleCloseImg = () => {
-  //   setImg(null)
-  // }
-  const createPost = async (e) => {
-    e.preventDefault();
-
-    try{
-      const formData = new FormData()
-      let filename = null
-
-      if(img){
-        filename = crypto.randomUUID() + img.name
-        formData.append('filename', filename)
-        formData.append('image', img)
-
-        await axios({
-          method: 'POST',
-          url: 'https://uwaksblog.onrender.com/api/posts/upload',
-          data: formData
-        })
-        .then((res) => {console.log(res.data)})
-        .catch((err) => {console.log(err)})
-      }else{
-        return
-      }
-
-      const options = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-      const body = {
-        title,
-        desc,
-        category,
-        photo: filename
-      }
-      const data = await request('/api/posts/', 'POST', options, body)
-      navigate(`/viewpost/${data._id}`)
-      console.log(data)
-    }
-    catch(error){
-      console.log(error)
+  const previewFile = (file) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setpreviewImg(reader.result)
     }
   }
+
+  const createPost = async (e) => {
+    e.preventDefault();
+  
+    if(!img) return;
+    const reader = new FileReader()
+    reader.readAsDataURL(img)
+    reader.onloadend = () => {
+      uploadImage(reader.result)
+    };
+    reader.onerror = () => {
+      console.log('error')
+    }
+    // try{
+    //   const formData = new FormData()
+    //   let filename = null
+
+    //   if(img){
+    //     filename = crypto.randomUUID() + img.name
+    //     formData.append('filename', filename)
+    //     formData.append('image', img)
+
+    //     await axios({
+    //       method: 'POST',
+    //       url: 'http://localhost:3000/api/posts/upload',
+    //       data: formData
+    //     })
+    //     .then((res) => {console.log(res.data)})
+    //     .catch((err) => {console.log(err)})
+    //   }else{
+    //     return
+    //   }
+
+    //   const options = {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${token}`
+    //   }
+    //   const body = {
+    //     title,
+    //     desc,
+    //     category,
+    //     photo: filename
+    //   }
+    //   const data = await request('/api/posts/', 'POST', options, body)
+    //   navigate(`/viewpost/${data._id}`)
+    //   console.log(data)
+    // }
+    // catch(error){
+    //   console.log(error)
+    // }
+  }
+
+
+  const uploadImage = async (base64EncodedImage) => {
+    axios({
+      url: 'http://localhost:3000/api/posts/upload',
+      method: 'POST',
+      data: {
+        image: base64EncodedImage
+      }
+    }).then((res) => console.log(res) )
+    .catch((err) => console.log(err))
+  }
+  
     return(
       <Layout>
         <div className={`max-w-[1240px] mx-auto text-[14px] py-3 px-6 md:flex ${styles.createpost}`}>
           <div className='flex'>
             <form onSubmit={createPost} className='md:w-[500px]'>
-                {/* <label>Add Image</label> */}
                   {img ? 
                   <div
                    className='relative my-1 w-full h-[150px] overflow-hidden border-dashed rounded-[5px]'>
-                    <img src={img} className='w-full h-full absolute bg-center bg-contain' alt={fileName}/>
+                    <img src={previewImg} className='w-full h-full absolute bg-center bg-contain' alt={fileName}/>
                     <div className='absolute bg-black p-3 w-full flex justify-between text-white'>
                       {fileName}
                       <span className='cursor-pointer'><RiDeleteBinLine size={20} onClick={() => {

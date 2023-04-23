@@ -68,7 +68,7 @@ function Login(){
     const checkInputs = Boolean(fData.email) && Boolean(fData.password)
     return(
         <div className={styles.auth_container}>
-            <div className="max-w-[1240px] p-8 md:p-0 mx-auto h-screen flex items-center justify-center text-[#3d3c3c]">
+            <div className="max-w-[1240px] p-8 md:p-0 mx-auto h-screen flex items-center justify-center text-[14px] text-[#3d3c3c]">
                 <CardBox>
                     <div className="bg-[#1b1b1b] hidden md:flex justify-center items-center md:rounded-tl-[3px] md:rounded-bl-[3px]">
                         <div className={`px-8 py-14 border-[4px] border-white text-center rounded-full ${styles.bold}`}>
@@ -91,7 +91,7 @@ function Login(){
                             <span onClick={handleEye} className='absolute right-3 cursor-pointer bg-[#3d3c3c] text-white py-1 px-3 rounded-[5px] text-[12px]'>{eye ? 'hide': 'show'}</span>
                         </div>
                      
-                        <div className={`py-2 text-right ${styles.bold}`}>
+                        <div className={`py-2 text-right ${styles.bold} `}>
                             <Link to='/forgotpassword'>Forgot password?</Link>
                         </div>
                         <button className={`button w-full p-[10px] text-white rounded-[5px] ${styles.bold} ${checkInputs ? 'bg-[#3d3c3c] cursor' : 'bg-[#b2b2b2] cursor-not-allowed'}`} onClick={onSubmit} disabled={!checkInputs}>Login</button>

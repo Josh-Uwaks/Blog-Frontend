@@ -83,11 +83,11 @@ function Register(){
             <div className="max-w-[1240px] p-8 md:p-0 mx-auto h-screen flex items-center justify-center text-[#3d3c3c]">
                 <CardBox>
                 <div className="bg-[#1b1b1b] hidden md:flex justify-center items-center">
-                        <div className={`px-8 py-14 border-[4px] border-white text-center rounded-full ${styles.bold}`}>
-                            <h1 className="text-[#ec3338] text-2xl">In-House</h1>
-                            <h5 className="text-sm text-white">BLOG</h5>
-                        </div>
+                    <div className={`px-8 py-14 border-[4px] border-white text-center rounded-full ${styles.bold}`}>
+                        <h1 className="text-[#ec3338] text-2xl">In-House</h1>
+                        <h5 className="text-sm text-white">BLOG</h5>
                     </div>
+                </div>
                     <form onSubmit={onSubmit} className={styles.form_container}>
                     <div className="flex flex-col items-center">
                             <h1 className="text-[#ec3338] text-2xl">Register</h1>
