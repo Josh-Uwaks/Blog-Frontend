@@ -18,7 +18,7 @@ import DeleteModal from './deletemodal/delete'
 function Viewpost(){
     // const navigate = useNavigate()
     const {id} = useParams()
-    const url = `http://localhost:3000/api/posts/${id}`
+    const url = `https://uwaksblog.onrender.com/api/posts/${id}`
     const {user, token} = useSelector((state) => state.auth.user)
     
     const [postData, setPostData] = useState('')   
@@ -75,7 +75,7 @@ function Viewpost(){
                :
                <div>
                     <div>
-                        <img src={`http://localhost:3000/images/${postData?.photo}`} alt='/' className='h-[300px] rounded-[5px] w-full bg-contain bg-[#1b1b1b]'/>
+                        <img src={`https://uwaksblog.onrender.com/images/${postData?.photo}`} alt='/' className='h-[300px] rounded-[5px] w-full bg-contain bg-[#1b1b1b]'/>
                         <div className='flex justify-between'>
                             <div className='flex py-2 items-center gap-x-[5px]'>
                             <span className='p-2 text-[#ec3338] rounded-full cursor-pointer bg-[#1b1b1b]'>
@@ -122,8 +122,8 @@ function Viewpost(){
 
             
                }
-                <div className=''>
-                    <h1>Other Post you may like</h1>
+                <div>
+                    <h1 className={styles.bold}>No Component Available yet</h1>
                 </div>  
             </div>
         </Layout>

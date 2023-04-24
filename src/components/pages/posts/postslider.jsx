@@ -1,5 +1,5 @@
 import displayimage from '../../assets/drone.jpg'
-import './post.css'
+import '../../module/post.css'
 import {BiChevronLeft, BiChevronRight} from 'react-icons/bi'
 import { useEffect, useRef } from 'react'
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../../layouts";
-// import FeaturedPost from "../posts/featuredpost";
-// import PostSlider from "../posts/postslider";
+import FeaturedPost from "../posts/featuredpost";
+import PostSlider from "../posts/postslider";
 import Screen from "../posts/screen";
 
 

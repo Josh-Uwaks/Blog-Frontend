@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import NewsSkeleton from './components/boxcomponent/newskeleton'
 
 export default function Screen(){
-    const Post_Url = 'http://localhost:3000/api/posts/'
+    const Post_Url = 'https://uwaksblog.onrender.com/api/posts/'
     const [postData, setPostData] = useState('')
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -31,7 +31,7 @@ export default function Screen(){
                 setLoading(false)
             })
             .catch((err) => {console.log(err)})
-        }, 1000)
+        }, 3000)
     }, [])
 
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function Screen(){
                     postData.length > 0 ? postData.map((item,index) => (
                     <div key={item._id} className={index === currentSlide ? 'slide current' : 'slide'}>
                         <div className='img_container'>
-                            <img src={`http://localhost:3000/images/${item.photo}`} alt='/'/>
+                            <img src={`https://uwaksblog.onrender.com/images/${item.photo}`} alt='/'/>
                         </div>
                         <div className='flex flex-col mt-3'>
                             <h1 className='py-1 text-[#ec3338]'>{item.category}</h1>
@@ -107,7 +107,7 @@ export default function Screen(){
                     : filteredPost.length > 0 ? filteredPost.map((item, index) => (
                         <div className='sidenews' key={index}>
                             <div className='side_imgcontainer'>
-                                <img src={`http://localhost:3000/images/${item?.photo}`} alt='/'/>
+                                <img src={`https://uwaksblog.onrender.com/images/${item?.photo}`} alt='/'/>
                             </div>
                             <div className='flex flex-col'>
                                 <span className='text-[14px] text-[#ec3338]'>{item.category}</span>
