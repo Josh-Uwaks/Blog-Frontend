@@ -12,7 +12,7 @@ import { MdCloudUpload } from 'react-icons/md'
 function EditIndexPost(){
     
     const {id} = useParams()
-    const url = `https://uwaksblog.onrender.com/api/posts/${id}`
+    const url = `http://localhost:3000/api/posts/${id}`
     const [title, settitle] = useState('')
     const [desc, setdesc] = useState('')
     const [img, setImg] = useState('')

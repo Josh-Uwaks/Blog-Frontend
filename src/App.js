@@ -10,6 +10,7 @@ import ErrorPage from './components/pages/errpage/errpage';
 const App = () => {
   const [loading, setLoading] = useState(true)
   const spinner = document.getElementById('spinner')
+  
   if(spinner){
     setTimeout(() => {
       spinner.style.display="none"

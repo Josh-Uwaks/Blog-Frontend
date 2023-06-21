@@ -9,7 +9,7 @@ import CardBox from '../pages/posts/components/boxcomponent/cardbox';
 function ForgotPassword(){
     const [email, setEmail] = useState('')
     console.log(email)
-    const checkUrl = 'https://uwaksblog.onrender.com/api/users/resetpassword'
+    const checkUrl = 'http://localhost:3000/api/users/resetpassword'
 
     const sendEmail = (e) => {
         e.preventDefault();
